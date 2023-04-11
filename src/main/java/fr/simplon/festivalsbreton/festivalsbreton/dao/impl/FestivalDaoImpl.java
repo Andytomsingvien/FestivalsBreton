@@ -1,7 +1,6 @@
 package fr.simplon.festivalsbreton.festivalsbreton.dao.impl;
 
 import fr.simplon.festivalsbreton.festivalsbreton.dao.FestivalDao;
-import fr.simplon.festivalsbreton.festivalsbreton.dao.FestivalRepository;
 import fr.simplon.festivalsbreton.festivalsbreton.entity.Festival;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
