@@ -3,12 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Créer un nouveau festival</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="/style.css"/>
+
 </head>
 <body>
 <h1>Créer un nouveau Festival</h1>
+<form id="formulaire" method="POST" action="/submit">
+    <label id="1" for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom">
 
+    <label id="2" for="url">URL :</label>
+    <input type="text" id="url" name="url">
 
+    <label id="3" for="ville">Ville :</label>
+    <input type="text" id="ville" name="ville">
 
+    <label id="4" for="cp">Code postal :</label>
+    <input type="number" id="cp" name="cp">
+
+    <label id="5" for="lieu">Lieu :</label>
+    <input type="text" id="lieu" name="lieu">
+
+    <label id="6" for="debut">Date de début :</label>
+    <input type="date" id="debut" name="debut">
+
+    <label id="7" for="fin">Date de fin :</label>
+    <input type="date" id="fin" name="fin">
+
+    <label id="8" for="lat">Latitude :</label>
+    <input type="number" id="lat" name="lat">
+
+    <label id="9" for="lon">Longitude :</label>
+    <input type="number" id="lon" name="lon">
+
+        <a href="index.html" class="myButton">Valider</a>
 
 </body>
 </html>
