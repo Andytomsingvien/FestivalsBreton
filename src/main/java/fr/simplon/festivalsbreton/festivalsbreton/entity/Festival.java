@@ -2,6 +2,8 @@ package fr.simplon.festivalsbreton.festivalsbreton.entity;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "Festivals")
 public class Festival {
