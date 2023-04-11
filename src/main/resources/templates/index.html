@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Les festivals de votre région</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/style.css" th:href="/style.css"/>
+
+
 </head>
 
 <body>
@@ -15,7 +16,8 @@
 </div>
 
 <form>
-    <button type="button" onclick="nouveauFestival.html">Créer un festival</button>
+
+    <a href="nouveauFestival.html" class="nouveau">Ajouter un nouveau festival</a>
 
 
 </form>
@@ -34,7 +36,7 @@
     <td>Lieu</td>
     <td>Date de début</td>
     <td>Date de fin</td>
-    <td><button class="editer" type="button">Editer</button></td>
+    <td><a href="editerFestival.html" class="myButton">Editer</a></td>
     </tbody>
 
 
