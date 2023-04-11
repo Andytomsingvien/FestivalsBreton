@@ -2,6 +2,8 @@ package fr.simplon.festivalsbreton.festivalsbreton.entity;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "Festivals")
 public class Festival {
@@ -13,6 +15,8 @@ public class Festival {
     @Column(name = "nom")
     private String nom;
 
+    @Column(name = "url")
+    private String url;
     @Column(name = "ville")
     private String ville;
 
@@ -33,6 +37,14 @@ public class Festival {
 
     @Column(name = "lon")
     private Double lon;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public Long getId() {
         return id;
