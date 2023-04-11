@@ -32,7 +32,7 @@ public class FestivalDaoImpl implements FestivalDao {
         festivalRepository.save(festival);
     }
     @Override
-    public void updateFestival(Long id, String nom, String ville, Integer cp, String lieu, Date debut, Date fin, Double lat, Double lon) {
+    public void updateFestival(Long id,String nom, String ville, Integer cp, String lieu, Date debut, Date fin) {
         Festival festival = festivalRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid festival Id:" + id));
         festival.setNom(nom);
         festival.setVille(ville);
@@ -40,8 +40,16 @@ public class FestivalDaoImpl implements FestivalDao {
         festival.setLieu(lieu);
         festival.setDebut(debut);
         festival.setFin(fin);
-        festival.setLat(lat);
-        festival.setLon(lon);
         festivalRepository.save(festival);
     }
+    @Override
+    public Festival getFestivalById(Long id) {
+        return festivalRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteFestivalById(Long id) {
+        festivalRepository.deleteById(id);
+    }
+
 }

@@ -11,6 +11,10 @@ public interface FestivalDao {
     List<Festival> getAllFestivals();
 
     void saveFestival(String nom, String ville, Integer cp, String lieu, Date debut, Date fin, Double lat, Double lon);
-     void updateFestival(Long id, String nom, String ville, Integer cp, String lieu, Date debut, Date fin, Double lat, Double lon);
+     void updateFestival(Long id,String nom, String ville, Integer cp, String lieu, Date debut, Date fin);
 
-    }
+    Festival getFestivalById(Long id);
+
+    void deleteFestivalById(Long id);
+
+}
