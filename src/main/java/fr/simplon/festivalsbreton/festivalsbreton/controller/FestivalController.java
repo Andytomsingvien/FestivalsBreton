@@ -18,11 +18,11 @@ public class FestivalController {
     private FestivalDao festivalDao;
 
     @RequestMapping("/form")
-    public String endPointForm(Model model) {
+    public String formPourAjouterFestival(Model model) {
         return "form";
     }
     @PostMapping("/submit")
-    public String ajouterFestival(@ModelAttribute("festival") Festival festival, Model model) {
+    public String ajoutDuFestival(@ModelAttribute("festival") Festival festival, Model model) {
         model.addAttribute("festival", festival);
         festivalDao.saveFestival(festival.getNom(),festival.getVille(),festival.getCp(),festival.getLieu(),festival.getDebut(),festival.getFin(),festival.getLat(),festival.getLon());
         return "index";
