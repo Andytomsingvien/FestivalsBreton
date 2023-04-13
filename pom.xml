@@ -18,9 +18,15 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>org.osmdroid</groupId>
+            <artifactId>osmdroid-android</artifactId>
+            <version>6.1.8</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>leaflet</artifactId>
-            <version>1.7.1</version>
+            <version>1.8.0</version>
         </dependency>
 
         <dependency>

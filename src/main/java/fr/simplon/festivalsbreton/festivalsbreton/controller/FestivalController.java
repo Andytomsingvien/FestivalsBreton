@@ -1,5 +1,7 @@
 package fr.simplon.festivalsbreton.festivalsbreton.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.simplon.festivalsbreton.festivalsbreton.dao.FestivalDao;
 import fr.simplon.festivalsbreton.festivalsbreton.entity.Festival;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,17 @@ public class FestivalController {
     String afficherAllDonateurs(Model model) {
         List<Festival> festivals = festivalDao.getAllFestivals();
         model.addAttribute("festivals", festivals);
+
+                // Convertissez la liste des festivals en JSON
+                ObjectMapper objectMapper = new ObjectMapper();
+        String festivalsJson = "";
+        try {
+            festivalsJson = objectMapper.writeValueAsString(festivals);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        model.addAttribute("festivalsJson", festivalsJson);
         return "index";
     }
     @PostMapping("/edit-festival")
