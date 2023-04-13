@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Titre</title>
-    <link rel="stylesheet" href="/static/index.css">
+    <link rel="stylesheet" href="../static/index.css" th:href="@{/index.css}">
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
     <style>.map {
         width: 1000px;
         height: 400px;
@@ -45,50 +44,38 @@
         </tr>
         </thead>
 
-<tbody>
-<tr class="festivals" th:each="festival : ${festivals}">
-    <td th:text="${festival.nom}"></td>
-    <td th:text="${festival.ville}"></td>
-    <td th:text="${festival.lieu}"></td>
-    <td th:text="${festival.debut}"></td>
-    <td th:text="${festival.fin}"></td>
+        <tbody>
+        <tr class="festivals" th:each="festival : ${festivals}">
+            <td th:text="${festival.nom}"></td>
+            <td th:text="${festival.ville}"></td>
+            <td th:text="${festival.lieu}"></td>
+            <td th:text="${festival.debut}"></td>
+            <td th:text="${festival.fin}"></td>
 
-    <td>
-        <form method="POST" action="/edit-festival">
-            <input type="hidden" name="id" th:value="${festival.id}"/>
-            <input type="submit" value="Editer"/>
-        </form>
-    </td>
-</tr>
-</tbody>
-</table>
+            <td>
+                <form method="POST" action="/edit-festival">
+                    <input type="hidden" name="id" th:value="${festival.id}"/>
+                    <input type="submit" value="Editer"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
-<form method="POST" action="/add-Festival">
-    <input type="submit" value="Ajouter un festival">
-</form>
+    <form method="POST" action="/add-Festival">
+        <input type="submit" value="Ajouter un festival">
+    </form>
 
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-<script src="https://unpkg.com/jquery"></script>
-<script>
-    $(document).ready(function () {
-        let map = L.map('map').setView([47.8607, -2.9375], 8);
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Récupération des données des festivals à partir de la balise div cachée
-        let festivalsData = document.getElementById('festivals-data');
-        let festivals = JSON.parse(festivalsData.getAttribute('data-festivals'));
-
-        // Création des marqueurs pour chaque festival
-        for (const festival of festivals) {
-            L.marker([festival.lat, festival.lon]).addTo(map)
-                .bindPopup('Bienvenue au festival ' + festival.nom + ' à ' + festival.ville + '.<br> Toutes les informations sur notre site web :' + festival.url + '.');
-        }
-    });
-</script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/jquery"></script>
 </div>
 </body>
 </html>
+<script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
+<script>
+    document.addEventListener('readystatechange', event => {
+        if ( document.readyState ==='complete'){
+            initMap();
+        }
+    });
+</script>

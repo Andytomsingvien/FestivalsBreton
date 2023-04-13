@@ -1,9 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
     <title>Formulaire d'ajout de festival</title>
+    <!--Potentiel CSS -->
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <style>.map {
+        width: 1000px;
+        height: 400px;
+    }
+    </style>
+
 </head>
 <body>
+<div id="map" class="map"></div>
+
+<!-- Ajout d'une balise div cachée pour stocker les données des festivals -->
+<div id="festivals-data" th:attr="data-festivals=${festivalsJson}" style="display: none;"></div>
+
 <h1>Ajouter un festival</h1>
 <form method="POST" action="/submit">
 
@@ -29,12 +45,42 @@
     <input type="date" id="fin" name="fin"><br><br>
 
     <label for="lat">Latitude :</label>
-    <input type="number" id="lat" name="lat"><br><br>
+    <input type="number" id="lat" name="lat" step="0.000001"><br><br>
 
     <label for="lon">Longitude :</label>
     <input type="number" id="lon" name="lon" step="0.000001"><br><br>
 
+
     <input type="submit" value="Valider">
 </form>
+
+<!-- Ajouter le code Javascript pour la carte Leaflet -->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+<script src="https://unpkg.com/jquery"></script>
+<script>
+    let map = L.map('map').setView([47.8607, -2.9375], 8);
+
+    $(document).ready(function () {
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);}
+    )
+
+    // Ajouter un marqueur lorsque l'utilisateur clique sur la carte
+    function onMapClick(e) {
+        // Mettre à jour les champs de latitude et longitude du formulaire
+        document.getElementById('lat').value = e.latlng.lat.toFixed(6);
+        document.getElementById('lon').value = e.latlng.lng.toFixed(6);
+        // Ajouter un marqueur à l'emplacement cliqué
+        L.marker(e.latlng).addTo(map);
+    }
+
+    // Ajouter un événement click à la carte pour ajouter le marqueur et mettre à jour les champs
+    map.on('click', onMapClick);
+
+</script>
+
 </body>
 </html>
