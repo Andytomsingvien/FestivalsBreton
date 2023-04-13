@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Titre</title>
+    <link rel="stylesheet" href="/static/index.css">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <style>.map {
+        width: 1000px;
+        height: 400px;
+    }
+    .container{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .festivals{
+        display: flex;
+        align-content: space-between;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }</style>
+</head>
+<body>
+<div class="container">
+    <div id="map" class="map"></div>
+
+    <!-- Ajout d'une balise div cachée pour stocker les données des festivals -->
+    <div id="festivals-data" th:attr="data-festivals=${festivalsJson}" style="display: none;"></div>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Ville</th>
+            <th>Lieu</th>
+            <th>Début</th>
+            <th>Fin</th>
+            <th>Action</th>
+
+        </tr>
+        </thead>
+
+<tbody>
+<tr class="festivals" th:each="festival : ${festivals}">
+    <td th:text="${festival.nom}"></td>
+    <td th:text="${festival.ville}"></td>
+    <td th:text="${festival.lieu}"></td>
+    <td th:text="${festival.debut}"></td>
+    <td th:text="${festival.fin}"></td>
+
+    <td>
+        <form method="POST" action="/edit-festival">
+            <input type="hidden" name="id" th:value="${festival.id}"/>
+            <input type="submit" value="Editer"/>
+        </form>
+    </td>
+</tr>
+</tbody>
+</table>
+
+<form method="POST" action="/add-Festival">
+    <input type="submit" value="Ajouter un festival">
+</form>
+
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+<script src="https://unpkg.com/jquery"></script>
+<script>
+    $(document).ready(function () {
+        let map = L.map('map').setView([47.8607, -2.9375], 8);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Récupération des données des festivals à partir de la balise div cachée
+        let festivalsData = document.getElementById('festivals-data');
+        let festivals = JSON.parse(festivalsData.getAttribute('data-festivals'));
+
+        // Création des marqueurs pour chaque festival
+        for (const festival of festivals) {
+            L.marker([festival.lat, festival.lon]).addTo(map)
+                .bindPopup('Bienvenue au festival ' + festival.nom + ' à ' + festival.ville + '.<br> Toutes les informations sur notre site web :' + festival.url + '.');
+        }
+    });
+</script>
+</div>
+</body>
+</html>
