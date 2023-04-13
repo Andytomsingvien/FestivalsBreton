@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Titre</title>
     <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
@@ -10,29 +11,39 @@
         width: 1000px;
         height: 400px;
     }
-    .container{
+
+    .container {
         display: flex;
         align-items: center;
         flex-direction: column;
         margin-top: 20px;
     }
-    .festivals{
-        display: flex;
+
+    .festivals {
         align-content: space-between;
         margin-top: 10px;
         margin-bottom: 15px;
     }</style>
 </head>
+
 <body>
+
+<h1>Les festivals de votre région</h1>
 <div class="container">
     <div id="map" class="map"></div>
 
     <!-- Ajout d'une balise div cachée pour stocker les données des festivals -->
     <div id="festivals-data" th:attr="data-festivals=${festivalsJson}" style="display: none;"></div>
 
+    <!--Bouton jour accéder au formulaire de création d'un festival -->
+    <div class="bouton">
+        <a href="form.html" th:href="@{/add-Festival}" class="nouveau">Ajouter un nouveau festival</a>
+    </div>
 
-    <table>
-        <thead>
+    <!-- Tableau avec la liste des festivals -->
+    <table class="tableau">
+        <caption class="titre">Liste des prochains festivals</caption>
+        <thead class="listeFestivals">
         <tr>
             <th>Nom</th>
             <th>Ville</th>
@@ -40,18 +51,16 @@
             <th>Début</th>
             <th>Fin</th>
             <th>Action</th>
-
         </tr>
         </thead>
 
-        <tbody>
-        <tr class="festivals" th:each="festival : ${festivals}">
+        <tbody class="festivals">
+        <tr th:each="festival : ${festivals}">
             <td th:text="${festival.nom}"></td>
             <td th:text="${festival.ville}"></td>
             <td th:text="${festival.lieu}"></td>
             <td th:text="${festival.debut}"></td>
             <td th:text="${festival.fin}"></td>
-
             <td>
                 <form method="POST" action="/edit-festival">
                     <input type="hidden" name="id" th:value="${festival.id}"/>
@@ -74,7 +83,7 @@
 <script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
 <script>
     document.addEventListener('readystatechange', event => {
-        if ( document.readyState ==='complete'){
+        if (document.readyState === 'complete') {
             initMap();
         }
     });

@@ -46,7 +46,10 @@ body{
     padding: 14px 24px;
     text-decoration: none;
     text-shadow: 0px 1px 12px #283966;
-    margin: 0 auto 0 auto;
+    margin-top: 2em;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 2em;
 
 }
 
@@ -115,27 +118,25 @@ input {
     text-transform: uppercase;
 
 }
+/* Mise en page du tableau */
 
-thead, tfoot {
-    background: #599bb3;
-    color: white;
-    text-shadow: 1px 1px 1px #040455;
+* {
+    font-family: Arial;
+    text-align: center;
 }
 
-thead th, tfoot th, tfoot td {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgb(4, 4, 85));
-    border: 3px solid #001580;
+caption {
+    padding-bottom: 15px;
 }
 
-thead, tbody {
-    background: #599bb3;
-    color: white;
-    text-shadow: 1px 1px 1px #040455;
+table {
+    border-collapse: collapse;
+    margin: auto;
 }
 
-thead th, tbody th, tbody td {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgb(4, 4, 85));
-    border: 3px solid #001580;
+td, th {
+    padding: 15px;
+    border: 1px solid black;
 }
 
 /*Mise en page de l'édition d'un festival*/
@@ -236,6 +237,34 @@ input {
 .myButton:active {
     position: relative;
     top: 1px;
+}
+
+
+
+
+
+/* Pour un site responsive */
+@media screen and (max-width: 996px) {
+    header nav {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    header,
+    footer {
+        padding: 20px 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    section {
+        padding: 50px 20px 50px 20px;
+    }
+
 }
 
 
