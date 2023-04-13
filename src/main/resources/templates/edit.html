@@ -3,35 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Editer un festival</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}"/>
 </head>
 <body>
 
 <h1> Editer un festival</h1>
-<form method="POST" th:action="@{/edit/{id}(id=${festival.id})}">
+
+<form id="édition" method="POST" th:action="@{/edit/{id}(id=${festival.id})}">
     <label for="nom">Nom :</label>
     <input type="text" id="nom" name="nom" th:value="${festival.nom}"><br><br>
 
     <label for="ville">Ville :</label>
     <input type="text" id="ville" name="ville" th:value="${festival.ville}"><br><br>
 
-    <label for="cp">Code Postale :</label>
+    <label for="cp">Code Postal :</label>
     <input type="text" id="cp" name="cp" th:value="${festival.cp}"><br><br>
 
     <label for="lieu">Lieu :</label>
     <input type="text" id="lieu" name="lieu" th:value="${festival.lieu}"><br><br>
 
-    <label for="debut">Début :</label>
+    <label for="debut">Date de début :</label>
     <input type="date" id="debut" name="debut" th:value="${festival.debut}"><br><br>
 
-    <label for="fin">Fin :</label>
+    <label for="fin">Date de fin :</label>
     <input type="date" id="fin" name="fin" th:value="${festival.fin}"><br><br>
 
     <button type="submit">Modifier</button>
 
 </form>
+
 <form method="POST" th:action="@{/delete/{id}(id=${festival.id})}">
-    <td><button onclick="confirmerSuppression(${festival.id})">Supprimer</button></td>
+    <td><button class="supprimer" onclick="confirmerSuppression(${festival.id})">Supprimer</button></td>
 </form>
+
 </body>
 </html>
 <script src="edit.js"></script>

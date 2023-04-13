@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Les festivals de votre région</title>
-    <link rel="stylesheet" href="../static/style.css" th:href="/style.css"/>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}"/>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
           integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
@@ -34,17 +34,15 @@
     <!-- Ajout d'une balise div cachée pour stocker les données des festivals -->
     <div id="festivals-data" th:attr="data-festivals=${festivalsJson}" style="display: none;"></div>
 
+    <hr>
+
     <div class="bouton">
+        <a href="form.html" th:href="@{/add-Festival}" class="nouveau">Ajouter un nouveau festival</a>
+        </div>
 
-        <a href="nouveauFestival.html" class="nouveau">Ajouter un nouveau festival</a>
-    
-    
-    </div>
 
-<hr>
-
-<table>
-    <caption>Liste des prochains festivals </caption>
+<table class="tableau">
+    <caption class="titre">Liste des prochains festivals </caption>
 <thead class="listeFestivals">
     <th>Nom</th>
     <th>Ville</th>
@@ -71,9 +69,7 @@
 </tbody>
 </table>
 
-<form method="POST" action="/add-Festival">
-    <input type="submit" value="Ajouter un festival">
-</form>
+
 
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
