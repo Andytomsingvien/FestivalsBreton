@@ -46,4 +46,7 @@
 </table>
 
 </body>
+<script th:each="festival : ${festivals}" th:object="${festival}" th:inline="javascript">
+    addMarkerOnMap([[*{lat}]], [[*{lon}]], [[*{nom}]], [[*{ville}]]);
+</script>
 </html>
