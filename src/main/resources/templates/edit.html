@@ -11,13 +11,13 @@
 
 <form id="édition" method="POST" th:action="@{/edit/{id}(id=${festival.id})}">
     <label for="nom">Nom :</label>
-    <input type="text" id="nom" name="nom" th:value="${festival.nom}"><br><br>
+    <input type="text" id="nom" name="nom" readonly th:value="${festival.nom}"><br><br>
 
     <label for="ville">Ville :</label>
-    <input type="text" id="ville" name="ville" th:value="${festival.ville}"><br><br>
+    <input type="text" id="ville" name="ville" readonly th:value="${festival.ville}"><br><br>
 
     <label for="cp">Code Postal :</label>
-    <input type="text" id="cp" name="cp" th:value="${festival.cp}"><br><br>
+    <input type="text" id="cp" name="cp" readonly th:value="${festival.cp}"><br><br>
 
     <label for="lieu">Lieu :</label>
     <input type="text" id="lieu" name="lieu" th:value="${festival.lieu}"><br><br>
