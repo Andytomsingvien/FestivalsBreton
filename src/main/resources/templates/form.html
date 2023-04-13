@@ -5,8 +5,7 @@
     <title>Formulaire d'ajout de festival</title>
     <!--Potentiel CSS -->
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
     <style>.map {
         width: 1000px;
         height: 400px;
@@ -55,32 +54,17 @@
 </form>
 
 <!-- Ajouter le code Javascript pour la carte Leaflet -->
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 <script src="https://unpkg.com/jquery"></script>
-<script>
-    let map = L.map('map').setView([47.8607, -2.9375], 8);
 
-    $(document).ready(function () {
-
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);}
-    )
-
-    // Ajouter un marqueur lorsque l'utilisateur clique sur la carte
-    function onMapClick(e) {
-        // Mettre à jour les champs de latitude et longitude du formulaire
-        document.getElementById('lat').value = e.latlng.lat.toFixed(6);
-        document.getElementById('lon').value = e.latlng.lng.toFixed(6);
-        // Ajouter un marqueur à l'emplacement cliqué
-        L.marker(e.latlng).addTo(map);
-    }
-
-    // Ajouter un événement click à la carte pour ajouter le marqueur et mettre à jour les champs
-    map.on('click', onMapClick);
-
-</script>
 
 </body>
 </html>
+<script src="../static/js/form.js" th:src="@{/js/form.js}"></script>
+<script>
+    document.addEventListener('readystatechange', event => {
+        if ( document.readyState ==='complete'){
+            initMap();
+        }
+    });
+</script>
