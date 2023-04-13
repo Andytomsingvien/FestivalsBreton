@@ -1,52 +1,81 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Les festivals de votre région</title>
-    <link rel="stylesheet" href="../static/style.css" th:href="/style.css"/>
-
-
+    <title>Titre</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+    <style>.map {
+        width: 1000px;
+        height: 400px;
+    }
+    .container{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .festivals{
+        display: flex;
+        align-content: space-between;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }</style>
 </head>
-
 <body>
+<div class="container">
+    <div id="map" class="map"></div>
 
-<h1>Les festivals de votre région</h1>
-<div class="carte">
+    <!-- Ajout d'une balise div cachée pour stocker les données des festivals -->
+    <div id="festivals-data" th:attr="data-festivals=${festivalsJson}" style="display: none;"></div>
 
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Ville</th>
+            <th>Lieu</th>
+            <th>Début</th>
+            <th>Fin</th>
+            <th>Action</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr class="festivals" th:each="festival : ${festivals}">
+            <td th:text="${festival.nom}"></td>
+            <td th:text="${festival.ville}"></td>
+            <td th:text="${festival.lieu}"></td>
+            <td th:text="${festival.debut}"></td>
+            <td th:text="${festival.fin}"></td>
+
+            <td>
+                <form method="POST" action="/edit-festival">
+                    <input type="hidden" name="id" th:value="${festival.id}"/>
+                    <input type="submit" value="Editer"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form method="POST" action="/add-Festival">
+        <input type="submit" value="Ajouter un festival">
+    </form>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/jquery"></script>
 </div>
-
-<div class="bouton">
-
-    <a href="nouveauFestival.html" class="nouveau">Ajouter un nouveau festival</a>
-
-
-</div>
-<hr>
-<table>
-    <caption>Liste des prochains festivals </caption>
-<thead class="listeFestivals">
-    <th>Nom</th>
-    <th>Ville</th>
-    <th>Lieu</th>
-    <th>Date de début</th>
-    <th>Date de fin</th>
-</thead>
-
-    <tbody>
-    <td>Nom</td>
-    <td>Ville</td>
-    <td>Lieu</td>
-    <td>Date de début</td>
-    <td>Date de fin</td>
-    <td class="editer"><a href="editerFestival.html" class="myButton">Editer</a></td>
-    </tbody>
-
-
-
-</table>
-
 </body>
-<script th:each="festival : ${festivals}" th:object="${festival}" th:inline="javascript">
-    addMarkerOnMap([[*{lat}]], [[*{lon}]], [[*{nom}]], [[*{ville}]]);
-</script>
 </html>
+<script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
+<script>
+    document.addEventListener('readystatechange', event => {
+        if ( document.readyState ==='complete'){
+            initMap();
+        }
+    });
+</script>
