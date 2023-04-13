@@ -16,12 +16,13 @@
         flex-direction: column;
         margin-top: 20px;
     }
-    .festivals{
-        display: flex;
+    festivals{
         align-content: space-between;
         margin-top: 10px;
         margin-bottom: 15px;
-    }</style>
+    }
+
+    </style>
 </head>
 <body>
 <div class="container">
@@ -29,7 +30,11 @@
 
     <!-- Ajout d'une balise div cachée pour stocker les données des festivals -->
     <div id="festivals-data" th:attr="data-festivals=${festivalsJson}" style="display: none;"></div>
-
+    <div>
+        <label for="search">Rechercher un festival :</label>
+        <input type="text" id="search" name="search" placeholder="Nom ou ville">
+        <button onclick="rechercher()">Rechercher</button>
+    </div>
 
     <table>
         <thead>

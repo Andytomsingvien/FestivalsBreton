@@ -244,3 +244,10 @@ input {
 }
 
 
+.festivals{
+    display: flex;
+    align-content: space-between;
+    flex-direction: column; /* Ajout de cette ligne */
+    margin-top: 10px;
+    margin-bottom: 15px;
+}

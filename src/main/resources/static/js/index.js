@@ -45,5 +45,35 @@ function initMap() {
     }
 
     createMarkers();
-}
 
+
+}
+/**
+
+ Recherche des festivals dans une liste en fonction du texte saisi dans un champ de recherche.
+ @function
+ @name rechercher
+ @returns {void}
+ */
+function rechercher() {
+// Récupère la valeur du champ de recherche
+    let texte = document.getElementById("search").value.toLowerCase();
+// Récupère la liste des festivals
+    let festivals = document.querySelectorAll(".festivals");
+
+// Parcours la liste des festivals
+    for (let i = 0; i < festivals.length; i++) {
+// Récupère le nom et la ville du festival
+        let nomFestival = festivals[i].querySelector("td:nth-of-type(1)").textContent.toLowerCase();
+        let villeFestival = festivals[i].querySelector("td:nth-of-type(2)").textContent.toLowerCase();
+
+// Masque le festival si le texte ne correspond pas au nom ou à la ville
+        if (nomFestival.indexOf(texte) == -1 && villeFestival.indexOf(texte) == -1) {
+            festivals[i].style.display = "none";
+        }
+// Sinon affiche le/les festivals concerné(s)
+        else {
+            festivals[i].style.display = "flex";
+        }
+    }
+}
