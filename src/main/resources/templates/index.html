@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <title>Titre</title>
-    <link rel="stylesheet" href="/static/index.css">
+    <title>Les festivals de votre région</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="/style.css"/>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
           integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
@@ -24,26 +25,33 @@
         margin-bottom: 15px;
     }</style>
 </head>
+
 <body>
+    <h1>Les festivals de votre région</h1>
 <div class="container">
     <div id="map" class="map"></div>
 
     <!-- Ajout d'une balise div cachée pour stocker les données des festivals -->
     <div id="festivals-data" th:attr="data-festivals=${festivalsJson}" style="display: none;"></div>
 
+    <div class="bouton">
 
-    <table>
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Ville</th>
-            <th>Lieu</th>
-            <th>Début</th>
-            <th>Fin</th>
-            <th>Action</th>
+        <a href="nouveauFestival.html" class="nouveau">Ajouter un nouveau festival</a>
+    
+    
+    </div>
 
-        </tr>
-        </thead>
+<hr>
+
+<table>
+    <caption>Liste des prochains festivals </caption>
+<thead class="listeFestivals">
+    <th>Nom</th>
+    <th>Ville</th>
+    <th>Lieu</th>
+    <th>Date de début</th>
+    <th>Date de fin</th>
+</thead>
 
 <tbody>
 <tr class="festivals" th:each="festival : ${festivals}">
