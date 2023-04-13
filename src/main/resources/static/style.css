@@ -81,7 +81,7 @@ body{
     margin-top: 5em;
     display: grid;
     grid-template-columns: 35em 20em; /* Colonne pour les labels et colonne pour les inputs */
-    grid-column-gap: 10px; /* Espacement entre les colonnes */
+    grid-column-gap: 5em; /* Espacement entre les colonnes */
 
 }
 
@@ -131,13 +131,35 @@ input {
     color: #040455;
 
 }
+.jeCherche {
+    box-shadow:inset 0px -1px 14px -7px #276873;
+    background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    background-color:#599bb3;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Verdana;
+    font-size:15px;
+    font-weight:bold;
+    padding:3px 9px;
+    text-decoration:none;
+    text-shadow:0px 1px 16px #3d768a;}
+.jeCherche:hover {
+    background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+    background-color:#408c99;
+}
+.jeCherche:active {
+    position:relative;
+    top:1px;
+}
 /* Mise en page du tableau */
 
 
 table {
     border: 2px solid #1C6EA4;
     background-color: #EEEEEE;
-    width: 100%;
+    width: 80%;
     text-align: center;
     border-collapse: collapse;
 }
@@ -164,6 +186,7 @@ table thead th {
     color: #FFFFFF;
     text-align: center;
     border-left: 1px solid #D0E4F5;
+    font-family: Castellar, sans-serif;
 }
 table thead th:first-child {
     border-left: none;
@@ -193,7 +216,6 @@ table tfoot .links a{
     border-radius: 5px;
 }
 
-
 .boutonEditer{
     background-image:url("static/crayon.png");
     box-shadow:inset 0px -1px 14px -7px #276873;
@@ -206,7 +228,7 @@ table tfoot .links a{
     font-family:Arial;
     font-size:20px;
     font-weight:bold;
-    padding:6px 17px;
+    padding:3px 10px;
     text-decoration:none;
     text-shadow:0px 1px 16px #3d768a;}
 boutonEditer:hover {
@@ -241,6 +263,13 @@ input {
     grid-column: 2 / 3; /* Positionnement dans la deuxième colonne */
     text-align: left;
 }
+/* Style pour le bouton de validation */
+.modifier {
+    grid-column: span 2; /* Span sur deux colonnes pour qu'il occupe toute la largeur */
+    justify-self: right; /* Alignement horizontal droite */
+}
+
+
 /* Bouton spprimer */
 
 .supprimer {
@@ -257,7 +286,11 @@ input {
     padding: 7px 25px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #810e05;
-    float: right;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
 }
 
 .supprimer:hover {
@@ -319,7 +352,54 @@ input {
     top: 1px;
 }
 
+/*Bouton Modifier*/
 
+.modifier {
+
+    -moz-box-shadow: 3px 4px 0px 0px #276873;
+    -webkit-box-shadow: 3px 4px 0px 0px #276873;
+    box-shadow: 3px 4px 0px 0px #276873;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #599bb3), color-stop(1, #408c99));
+    background: -moz-linear-gradient(top, #599bb3 5%, #408c99 100%);
+    background: -webkit-linear-gradient(top, #599bb3 5%, #408c99 100%);
+    background: -o-linear-gradient(top, #599bb3 5%, #408c99 100%);
+    background: -ms-linear-gradient(top, #599bb3 5%, #408c99 100%);
+    background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bb3', endColorstr='#408c99', GradientType=0);
+    background-color: #599bb3;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    border-radius: 18px;
+    border: 1px solid #29668f;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Verdana;
+    font-size: 17px;
+    padding: 7px 25px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #3d768a;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.modifier:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #408c99), color-stop(1, #599bb3));
+    background: -moz-linear-gradient(top, #408c99 5%, #599bb3 100%);
+    background: -webkit-linear-gradient(top, #408c99 5%, #599bb3 100%);
+    background: -o-linear-gradient(top, #408c99 5%, #599bb3 100%);
+    background: -ms-linear-gradient(top, #408c99 5%, #599bb3 100%);
+    background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#408c99', endColorstr='#599bb3', GradientType=0);
+    background-color: #408c99;
+}
+
+.modifier:active {
+    position: relative;
+    top: 1px;
+}
 
 
 

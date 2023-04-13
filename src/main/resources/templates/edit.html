@@ -10,6 +10,10 @@
 
 <h1> Editer un festival</h1>
 
+<form method="POST" th:action="@{/delete/{id}(id=${festival.id})}">
+    <td><button class="supprimer" onclick="confirmerSuppression(${festival.id})">Supprimer</button></td>
+</form>
+
 <form id="édition" method="POST" th:action="@{/edit/{id}(id=${festival.id})}">
     <label for="nom">Nom :</label>
     <input type="text" id="nom" name="nom" readonly th:value="${festival.nom}"><br><br>
@@ -29,13 +33,10 @@
     <label for="fin">Date de fin :</label>
     <input type="date" id="fin" name="fin" th:value="${festival.fin}"><br><br>
 
-    <button type="submit">Modifier</button>
+    <input type="submit" value="Modifier" class="modifier" </input>
 
 </form>
 
-<form method="POST" th:action="@{/delete/{id}(id=${festival.id})}">
-    <td><button class="supprimer" onclick="confirmerSuppression(${festival.id})">Supprimer</button></td>
-</form>
 
 </body>
 </html>
