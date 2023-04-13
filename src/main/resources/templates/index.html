@@ -35,6 +35,13 @@
     <!-- Ajout d'une balise div cachée pour stocker les données des festivals -->
     <div id="festivals-data" th:attr="data-festivals=${festivalsJson}" style="display: none;"></div>
 
+    <!-- Ajout d'une balise div afin de rechercher un festival par son nom ou sa ville -->
+    <div>
+        <label for="search">Rechercher un festival :</label>
+        <input type="text" id="search" name="search" placeholder="Nom ou ville">
+        <button onclick="rechercher()">Rechercher</button>
+    </div>
+
     <!--Bouton jour accéder au formulaire de création d'un festival -->
     <div class="bouton">
         <a href="form.html" th:href="@{/add-Festival}" class="nouveau">Ajouter un nouveau festival</a>
@@ -55,7 +62,7 @@
         </thead>
 
         <tbody class="festivals">
-        <tr th:each="festival : ${festivals}">
+        <tr class ="rechercher"th:each="festival : ${festivals}">
             <td th:text="${festival.nom}"></td>
             <td th:text="${festival.ville}"></td>
             <td th:text="${festival.lieu}"></td>
