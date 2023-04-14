@@ -14,6 +14,7 @@ h1 {
 
 body{
     background-color: #cddaf6;
+
 }
 
 /*Mise en style des boutons
@@ -80,7 +81,7 @@ body{
 #formulaire {
     margin-top: 5em;
     display: grid;
-    grid-template-columns: 35em 20em; /* Colonne pour les labels et colonne pour les inputs */
+    grid-template-columns: 20em 20em; /* Colonne pour les labels et colonne pour les inputs */
     grid-column-gap: 5em; /* Espacement entre les colonnes */
 
 }
@@ -90,6 +91,8 @@ label {
     grid-column: 1 / 2; /* Positionnement dans la première colonne */
     align-self: center; /* Alignement vertical centré */
     text-align: right;
+    font-family: Castellar;
+    font-size: 1.2em;
 }
 
 /* Style pour les inputs */
@@ -217,7 +220,7 @@ table tfoot .links a{
 }
 
 .boutonEditer{
-    background-image:url("static/crayon.png");
+
     box-shadow:inset 0px -1px 14px -7px #276873;
     background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
     background-color:#599bb3;
@@ -246,7 +249,7 @@ boutonEditer:active {
 #édition {
     margin-top: 5em;
     display: grid;
-    grid-template-columns: 26em 20em; /* Colonne pour les labels et colonne pour les inputs */
+    grid-template-columns: 35em 20em; /* Colonne pour les labels et colonne pour les inputs */
     grid-column-gap: 10px; /* Espacement entre les colonnes */
 
 }
@@ -287,7 +290,7 @@ input {
     text-decoration: none;
     text-shadow: 0px 1px 0px #810e05;
     text-transform: uppercase;
-    align-items: center;
+    align-items: right;
     justify-content: center;
     text-align: center;
 
@@ -401,7 +404,26 @@ input {
     top: 1px;
 }
 
+/*Footer*/
 
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+
+.logo {
+    max-width: calc(100% - 60px); /* Soustraire la marge de 30 pixels de chaque côté */
+    margin: 20px;
+}
+
+/*Pour la carte Formulaire au centre*/
+.container2{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
 
 /* Pour un site responsive */
 @media screen and (max-width: 996px) {
